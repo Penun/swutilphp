@@ -40,7 +40,7 @@ class Auth {
 	{
 		if($this->login == FALSE)
 		{
-			header('Location: http://127.0.0.1/index.php/login');
+			header('Location: '.$this->ci->config->base_url().'/index.php/login');
 			exit();
 		}
 		else

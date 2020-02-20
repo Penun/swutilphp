@@ -49,6 +49,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'species';
+$route['default_controller'] = 'main';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['species']['GET'] = 'main/species';
+$route['species/(:num)']['GET'] = 'main/species';
+$route['species/list'] = 'species';
+$route['species']['POST'] = 'species/species_id';
+$route['species/(:num)']['POST'] = 'species/species_id';
+$route['careers'] = 'careers';
+$route['careers/list']['GET'] = 'careers/list';
+$route['careers/specializations']['POST'] = 'careers/specializations';
+$route['careers/specialization']['POST'] = 'specializations/specialization';
+$route['careers/skills'] = 'careers/skills';
+$route['careers/(:any)'] = 'careers';
+$route['career'] = 'careers/career';
+$route['specializations'] = 'specializations';
+$route['specializations/skills'] = 'specializations/skills';
+$route['specializations/talents'] = 'specializations/talents';
+$route['specializations/talent'] = 'specializations/talent';
+$route['specializations/(:any)'] = 'specializations';
+//$route['skills'] = ;

@@ -32,7 +32,7 @@ class Login extends CI_Controller {
         {
 			$resp = array('success' => false, 'error' => '');
 			$resp['user_name'] = $username = 'user';
-			$resp['password'] = $password = 'pass';
+			$resp['password'] = $password = sha1($this->config->item('salt')."Hermes&6866");
 			$user = array();
             //$resp['user_name'] = $username = $subm_data['user_name'];
 			//$resp['password'] = $password = $subm_data['password'];
