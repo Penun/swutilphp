@@ -6,44 +6,32 @@ class Login extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+		$this->load->helper('form');
         $this->load->library('Auth');
 		$this->_populate_form_rules();
     }
 
 	public function index() {
-        //if ($this->auth->is_logged_in())
-        //{
-        //    header('Location: '.$this->config->item('base_url').'/index.php/main');
-		//	return;
-        //}
-
-        //$this->load->library('form_validation');
-		//$subm_data = json_decode(file_get_contents('php://input'), true);
-        //if ($subm_data != null){
-		//	$this->form_validation->set_data($subm_data);
-		//}
-        //$this->form_validation->set_rules($this->form_rules['login']);
-        //if (!$this->form_validation->run())
-        if (FALSE)
-        {
-            $this->load->view('login');
+        if ($this->auth->is_logged_in()){
+           header('Location: '.$this->config->item('base_url').'/index.php/species');
+			return;
         }
-        else
-        {
-			$resp = array('success' => false, 'error' => '');
-			$resp['user_name'] = $username = 'user';
-			$resp['password'] = $password = sha1($this->config->item('salt')."Hermes&6866");
-			$user = array();
-            //$resp['user_name'] = $username = $subm_data['user_name'];
-			//$resp['password'] = $password = $subm_data['password'];
-			//$user = $this->auth->login($username,$password);
-			if($user !== FALSE && is_array($user)) {
-				$resp['success'] = true;
+
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules($this->form_rules['login']);
+		$data['error'] = '';
+        if ($this->form_validation->run() === FALSE){
+			$this->load->view('login', $data);
+		} else {
+			$username = $this->input->post('user_name');
+			$password = $this->input->post('password');
+			$user = $this->auth->login($username, $password);
+			if($user !== FALSE) {
+				header('Location: '.$this->config->item('base_url').'/index.php/species');
             } else {
-				$resp['error'] = 'User not found.';
+				$data['error'] = 'Incorrect login information.';
+				$this->load->view('login', $data);
 			}
-			header('Content-Type: application/json');
-			echo json_encode($resp);
         }
     }
 

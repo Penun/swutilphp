@@ -5,6 +5,5 @@
 <meta name="Viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
 
 <title>SWUTIL.info</title>
-<?php $this->load->view("includes/styles.php");
-    $this->load->view("includes/js.php"); ?>
+<?php $this->load->view("includes/styles.php"); ?>
 </head>

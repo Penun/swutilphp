@@ -40,7 +40,7 @@ class Auth {
 	{
 		if($this->login == FALSE)
 		{
-			header('Location: '.$this->ci->config->base_url().'/index.php/login');
+			header('Location: '.$this->ci->config->item('base_url').'/index.php/login');
 			exit();
 		}
 		else
@@ -52,20 +52,19 @@ class Auth {
 	/*
 	* Logs in the user.
 	*/
-	public function login($username, $password)
-	{
-		$password = sha1($this->salt . $password);
-        $user = $this->ci->user_model->login($username, $password);
-		if($user == FALSE)
-		{
+	public function login($username, $password){
+		$user = $this->ci->user_model->get_user($username);
+		if($user == FALSE){
 			return $this->login;
-		}
-		else
-		{
+		 }
+		//$password = password_hash($password, PASSWORD_DEFAULT);
+		$password = password_verify($password, $user['password']);
+		if ($password){
 			$this->__load_user($user);
 			$this->__set_session();
 			return $user;
 		}
+		return $this->login;
 	}
 
 	public function getUser(){
