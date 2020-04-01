@@ -16,4 +16,13 @@ class User_model extends CI_Model {
             return FALSE;
         }
     }
+
+    public function add_user($username, $password, $level = 1){
+        $data = array(
+            'user' => $username,
+            'password' => $password,
+            'level' => $level
+        );
+        return $this->db->insert('user', $data);
+    }
 }
