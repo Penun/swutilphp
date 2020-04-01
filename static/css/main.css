@@ -1,0 +1,71 @@
+body {
+    display: grid;
+    background-image: url("/static/img/starscape.png");
+	background-size: 100% 100%;
+	background-repeat: round;
+	color: #a4dde5;
+	font-family: 'Share Tech Mono', monospace;
+    height: 100vh;
+    margin: 0;
+}
+
+.sw_back {
+	background-image: url("/static/img/sw_back.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+.sw_back_s {
+	background-image: url("/static/img/sw_back_s.png");
+    background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+.page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login {
+    padding: 2.5vmin;
+}
+
+input[type=text], input[type=password] {
+    background: #44638b;
+    color: #a4dde5;
+    margin-left: 0.5vmin;
+    border: 0;
+    border-bottom: 1px solid #a4dde5;
+}
+
+button {
+	float: right;
+	background-color: rgba(84, 123, 168, 0.35);
+	color: #a4dde5;
+	display: inline-block;
+  	padding: 1vh 1vw;
+  	cursor: pointer;
+  	text-align: center;
+  	text-decoration: none;
+	border-width: 0.4vh;
+	border-color: #c0eaf1;
+	border-style: double;
+	outline: none;
+  	border-radius: 2vw;
+  	box-shadow: 0px 0px 10px 5px #729cc1;
+	margin-top: 5px;
+	z-index: 450;
+}
+
+button:hover {
+    box-shadow: 0 0 0.5vh 0.5vw #547ba8;
+	background-color: rgba(84, 123, 168, 0.65);
+}
+
+button:active {
+	background-color: rgba(192, 234, 241, 0.5);
+    box-shadow: 0 0 0.5vh 0.5vw rgba(192, 234, 241, 0.75);
+	color: #83d9e6;
+	transform: scale(0.9, 0.9);
+}
